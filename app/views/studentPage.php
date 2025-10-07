@@ -294,8 +294,8 @@
             <?php foreach ($records as $row): ?>
               <tr>
                 <td><?= $row['id']; ?></td>
-                <td><?= $row['fname']; ?></td>
-                <td><?= $row['lname']; ?></td>
+                <td><?= $row['first_name']; ?></td>
+                <td><?= $row['last_name']; ?></td>
                 <td><?= $row['email']; ?></td>
               </tr>
             <?php endforeach; ?>
