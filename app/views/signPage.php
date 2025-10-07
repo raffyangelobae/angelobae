@@ -4,59 +4,82 @@
   <meta charset="UTF-8">
   <title>Sign Up Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom palette using Tailwind’s arbitrary values */
+    body {
+      background: linear-gradient(135deg, #DF3E91, #0F71B4, #00C853);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .glow-input:focus {
+      box-shadow: 0 0 10px rgba(15, 113, 180, 0.5);
+      border-color: #DF3E91;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(to right, #DF3E91, #0F71B4);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(to right, #00C853, #0F71B4);
+      transform: scale(1.02);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-  <div class="bg-white shadow-lg rounded-2xl p-8 w-96">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Create Account</h2>
+<body class="flex items-center justify-center h-screen text-gray-800">
+
+  <div class="bg-white/95 shadow-2xl rounded-2xl p-8 w-96 backdrop-blur-md border border-white/20">
+    <h2 class="text-3xl font-extrabold text-center text-[#0F71B4] mb-6">Create Account</h2>
 
     <form action="signup" method="POST" class="space-y-5">
-      <!-- Firstname -->
+      <!-- First Name -->
       <div>
-        <label for="firstname" class="block text-sm font-medium text-gray-700 mb-1">
-          First Name
-        </label>
+        <label for="firstname" class="block text-sm font-semibold text-gray-700 mb-1">First Name</label>
         <input type="text" name="First_Name" id="firstname" required
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+          class="glow-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DF3E91]">
       </div>
 
-      <!-- Lastname -->
+      <!-- Last Name -->
       <div>
-        <label for="lastname" class="block text-sm font-medium text-gray-700 mb-1">
-          Last Name
-        </label>
+        <label for="lastname" class="block text-sm font-semibold text-gray-700 mb-1">Last Name</label>
         <input type="text" name="Last_Name" id="lastname" required
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+          class="glow-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DF3E91]">
       </div>
 
       <!-- Email -->
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-          Email
-        </label>
+        <label for="email" class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
         <input type="email" name="Email" id="email" required
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+          class="glow-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DF3E91]">
       </div>
 
       <!-- Password -->
       <div>
-        <label for="password" class="block text-sm font-medium tessssxt-gray-700 mb-1">
-          Password
-        </label>
+        <label for="password" class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
         <input type="password" name="passw" id="password" required
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none">
+          class="glow-input w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#DF3E91]">
       </div>
 
-      <!-- Button -->
+      <!-- Submit Button -->
       <button type="submit"
-        class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+        class="btn-gradient w-full text-white py-2 rounded-lg font-semibold shadow-md hover:shadow-lg">
         Sign Up
       </button>
     </form>
 
-    <p class="text-sm text-gray-600 mt-4 text-center">
+    <p class="text-sm text-gray-700 mt-5 text-center">
       Already have an account?
-      <a href="login" class="text-blue-600 hover:underline">Login here</a>
+      <a href="login" class="text-[#DF3E91] hover:text-[#00C853] font-semibold transition">Login here</a>
     </p>
   </div>
+
 </body>
 </html>
