@@ -14,7 +14,7 @@ class Mod_Student extends Model
     // ✅ Get full user profile with role
     public function profile($email, $passw)
     {
-        $sql = "SELECT id, fname, lname, email, age, address, passw, role 
+        $sql = "SELECT id, first_name, last_name, email, password, role 
                 FROM {$this->table} 
                 WHERE email = ? AND passw = ?";
         $result = $this->db->raw($sql, [$email, $passw]);
@@ -36,13 +36,13 @@ class Mod_Student extends Model
     // ✅ Insert a new user (with role)
     public function insert($users)
     {
-        $sql = "INSERT INTO {$this->table} (fname, lname, email, passw, role) 
+        $sql = "INSERT INTO {$this->table} (first_name, last_name, email, password, role) 
                 VALUES (?, ?, ?, ?, ?)";
         return $this->db->raw($sql, [
-            $users['fname'],
-            $users['lname'],
+            $users['first_name'],
+            $users['last_name'],
             $users['email'],
-            $users['passw'],
+            $users['password'],
             $users['role'] ?? 'user'
         ]);
     }
@@ -51,7 +51,7 @@ class Mod_Student extends Model
     public function count_records($keyword = '')
     {
         if (!empty($keyword)) {
-            $sql = "SELECT COUNT(id) as total FROM {$this->table} WHERE fname LIKE ?";
+            $sql = "SELECT COUNT(id) as total FROM {$this->table} WHERE first_name LIKE ?";
             $result = $this->db->raw($sql, ["%{$keyword}%"]);
         } else {
             $sql = "SELECT COUNT(id) as total FROM {$this->table}";
@@ -64,7 +64,7 @@ class Mod_Student extends Model
     public function get_records($limit_clause, $keyword = '')
     {
         if (!empty($keyword)) {
-            $sql = "SELECT * FROM {$this->table} WHERE fname LIKE ?";
+            $sql = "SELECT * FROM {$this->table} WHERE first_name LIKE ?";
             $result = $this->db->raw($sql, ["%{$keyword}%"]);
         } else {
             $sql = "SELECT id, fname, lname, email, role 

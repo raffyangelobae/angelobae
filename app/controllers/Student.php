@@ -108,10 +108,10 @@ class Student extends Controller
                 $passwo = $_POST['Last_Name'];
             }
             $users = [
-                    'fname' => $_POST['First_Name'],
-                    'lname' => $_POST['Last_Name'],
+                    'first_name' => $_POST['First_Name'],
+                    'last_name' => $_POST['Last_Name'],
                     'email' => $_POST['Email'],
-                    'passw' => $passwo,
+                    'password' => $passwo,
                     'role'  => $_POST['role']  
                 ];
                 $this->Mod_Student->insert($users);
@@ -126,8 +126,8 @@ class Student extends Controller
     {
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $users = [
-                    'fname' => $_POST['First_Name'],
-                    'lname' => $_POST['Last_Name'],
+                    'first_name' => $_POST['First_Name'],
+                    'last_name' => $_POST['Last_Name'],
                     'email' => $_POST['Email']
                 ];
                 $this->Mod_Student->update($_POST['id'], $users);

@@ -22,10 +22,10 @@ class Login extends Controller {
             if ($data) {
                 // ✅ Set session
                 $_SESSION['user_id']  = $data['id'];
-                $_SESSION['fname']    = $data['fname'];
-                $_SESSION['lname']    = $data['lname'];
+                $_SESSION['first_name']    = $data['first_name'];
+                $_SESSION['last_name']    = $data['last_name'];
                 $_SESSION['email']    = $data['email'];
-                $_SESSION['passw']    = $data['passw'];
+                $_SESSION['password']    = $data['password'];
                 $_SESSION['role']      = $data['role'];
                 $_SESSION['logged_in'] = true;
 
@@ -59,10 +59,10 @@ class Login extends Controller {
             $passwo = !empty($_POST['passw']) ? $_POST['passw'] : $_POST['Last_Name'];
 
             $users = [
-                'fname' => $_POST['First_Name'],
-                'lname' => $_POST['Last_Name'],
+                'first_name' => $_POST['First_Name'],
+                'last_name' => $_POST['Last_Name'],
                 'email' => $_POST['Email'],
-                'passw' => $passwo,
+                'password' => $passwo,
                 // default signup role is user
                 'role'  => 'user'
             ];
