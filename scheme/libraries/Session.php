@@ -89,13 +89,16 @@ class Session {
 	    	$this->config['cookie_name'] = $this->config['sess_cookie_name'] ? $this->config['sess_cookie_name'] : NULL;
 	    }
 
-		//Set up cookie name
-	    if (empty($this->config['cookie_name']))
-		{
-	    	$this->config['cookie_name'] = ini_get('session.name');
-	    } else {
-	    	ini_set('session.name', $this->config['cookie_name']);
-	    }
+		// Set up cookie name
+		if (empty($this->config['cookie_name'])) {
+			$this->config['cookie_name'] = ini_get('session.name');
+		} else {
+			// Only change session.name if session not started yet
+			if (session_status() === PHP_SESSION_NONE) {
+				ini_set('session.name', $this->config['cookie_name']);
+			}
+		}
+
 
 		//Set up session expiration
 	    if (empty($this->config['sess_expiration']))
