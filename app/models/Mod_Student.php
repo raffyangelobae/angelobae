@@ -67,7 +67,7 @@ class Mod_Student extends Model
             $sql = "SELECT * FROM {$this->table} WHERE first_name LIKE ?";
             $result = $this->db->raw($sql, ["%{$keyword}%"]);
         } else {
-            $sql = "SELECT id, fname, lname, email, role 
+            $sql = "SELECT id, first_name, last_name, email, role 
                     FROM {$this->table} 
                     ORDER BY id DESC {$limit_clause}";
             $result = $this->db->raw($sql);
