@@ -3,7 +3,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class Mod_Student extends Model
 {
-    protected $table = "autable";
+    protected $table = "students";
 
     public function __construct()
     {
