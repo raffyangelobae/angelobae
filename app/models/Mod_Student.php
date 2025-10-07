@@ -16,7 +16,7 @@ class Mod_Student extends Model
     {
         $sql = "SELECT id, first_name, last_name, email, password, role 
                 FROM {$this->table} 
-                WHERE email = ? AND passw = ?";
+                WHERE email = ? AND password = ?";
         $result = $this->db->raw($sql, [$email, $passw]);
 
         $data = $result->fetch(PDO::FETCH_ASSOC);
