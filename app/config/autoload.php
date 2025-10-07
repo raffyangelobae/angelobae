@@ -92,7 +92,7 @@ $autoload['helpers'] = array('url', 'file');
 |
 |	$autoload['models'] = array('model1_model', 'model2_model')
 */
-$autoload['models'] = array('StudentsModel');
+$autoload['models'] = array('Mod_Student');
 
 /*
 | -------------------------------------------------------------------
