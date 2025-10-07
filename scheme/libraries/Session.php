@@ -106,7 +106,12 @@ class Session {
 	    	$this->config['sess_expiration'] = (int) ini_get('session.gc_maxlifetime');
 	    } else {
 	    	$this->config['sess_expiration'] = (int) $this->config['sess_expiration'];
-	    	ini_set('session.gc_maxlifetime', $this->config['sess_expiration']);
+
+			// Only change if session not started yet
+			if (session_status() === PHP_SESSION_NONE) {
+				ini_set('session.gc_maxlifetime', $this->config['sess_expiration']);
+			}
+
 	    }
 
 	    if (isset($this->config['cookie_expiration']))
