@@ -44,13 +44,18 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 */
 
 $router->get('/', 'Login::index');
-$router->match('/login', 'Login::index',['GET', 'POST']);
-$router->match('/signup', 'Login::signup',['GET', 'POST']);
-// logout
+$router->match('/login', 'Login::index', ['GET', 'POST']);
+$router->match('/signup', 'Login::signup', ['GET', 'POST']);
 $router->get('/logout', 'Login::logout');
-$router->get('/student/index', 'Student::index');          // for first page
-$router->get('/student/index/(:num)', 'Student::index/$1'); // for numbered pagess
+
+// ✅ Pagination routes
+$router->get('/student/index', 'Student::index');
+$router->get('/student/index/(:num)', 'Student::index/$1');
+
+// ✅ CRUD routes
+$router->post('/student/addd', 'Student::addd');
+$router->post('/student/updt', 'Student::updt');
+$router->post('/student/delete', 'Student::delete');
+
+// ✅ Search
 $router->post('/student/index/search', 'Student::index');
-$router->post('/student/index/inserted', 'Student::addd');
-$router->post('/student/index/update', 'Student::updt');
-$router->post('/student/index/softdel', 'Student::delete');
