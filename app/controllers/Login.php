@@ -21,19 +21,18 @@ class Login extends Controller {
 
             if ($data) {
                 // ✅ Set session
-                $_SESSION['user_id']  = $data['id'];
-                $_SESSION['first_name']    = $data['first_name'];
-                $_SESSION['last_name']    = $data['last_name'];
-                $_SESSION['email']    = $data['email'];
-                $_SESSION['password']    = $data['password'];
-                $_SESSION['role']      = $data['role'];
-                $_SESSION['logged_in'] = true;
+                $_SESSION['user_id']    = $data['id'];
+                $_SESSION['first_name'] = $data['first_name'];
+                $_SESSION['last_name']  = $data['last_name'];
+                $_SESSION['email']      = $data['email'];
+                $_SESSION['password']   = $data['password'];
+                $_SESSION['role']       = $data['role'];
+                $_SESSION['logged_in']  = true;
 
                 // ✅ Redirect based on role
                 if ($data['role'] === 'admin') {
-    header("Location: /student/index"); // Admin page
-    exit;
-}
+                    header("Location: /student/index"); // Admin page
+                    exit;
                 } elseif ($data['role'] === 'user') {
                     $this->call->view('ProfPage', ['data' => $data]); // User profile page
                     return;
@@ -44,6 +43,7 @@ class Login extends Controller {
                     $this->call->view('logPage', $data);
                     return;
                 }
+
             } else {
                 // ❌ Invalid credentials
                 $data['error'] = 'Invalid email or password';
@@ -51,6 +51,7 @@ class Login extends Controller {
                 return;
             }
         } else {
+            // Show login page on GET request
             $this->call->view('logPage');
         }
     }
@@ -61,17 +62,18 @@ class Login extends Controller {
 
             $users = [
                 'first_name' => $_POST['First_Name'],
-                'last_name' => $_POST['Last_Name'],
-                'email' => $_POST['Email'],
-                'password' => $passwo,
+                'last_name'  => $_POST['Last_Name'],
+                'email'      => $_POST['Email'],
+                'password'   => $passwo,
                 // default signup role is user
-                'role'  => 'user'
+                'role'       => 'user'
             ];
-            $this->Mod_Student->insert($users);
 
+            $this->Mod_Student->insert($users);
             header("Location: /login");
             exit;
         }
+
         $this->call->view('signPage');
     }
 
