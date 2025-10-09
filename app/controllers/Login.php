@@ -31,8 +31,9 @@ class Login extends Controller {
 
                 // ✅ Redirect based on role
                 if ($data['role'] === 'admin') {
-                    header("Location: /student/index/1"); // Admin page
-                    exit;
+    header("Location: /student/index"); // Admin page
+    exit;
+}
                 } elseif ($data['role'] === 'user') {
                     $this->call->view('ProfPage', ['data' => $data]); // User profile page
                     return;
